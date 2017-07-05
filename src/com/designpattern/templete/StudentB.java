@@ -5,9 +5,8 @@ package com.designpattern.templete;
 public class StudentB extends Homeork{
 
 	@Override
-	public void finishHomework() {
+	public void doHomework() {
 		// TODO 业务
 		System.out.println("B同学是这样完成作业的！");
 	}
-
 }
