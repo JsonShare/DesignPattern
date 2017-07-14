@@ -1,0 +1,29 @@
+对象适配：
+
+//目标接口，或称为标准接口 
+public interface Target {
+    //普通功能
+    public void request();
+}
+
+//已存在的、具有特殊功能、但不符合我们既有的标准接口的类  
+public class Adaptee {
+    public void specificRequest() {
+    }
+} 
+
+//适配器类，直接关联被适配类，同时实现标准接口  
+class Adapter implements Target {
+    // 直接关联被适配类
+    private Adaptee adaptee;
+
+    // 可以通过构造函数传入具体需要适配的被适配类对象
+    public Adapter(Adaptee adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void request() {
+        // 这里是使用委托的方式完成特殊功能
+        this.adaptee.specificRequest();
+    }
+}
