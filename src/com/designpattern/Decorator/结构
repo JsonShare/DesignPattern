@@ -1,0 +1,60 @@
+抽象构件角色
+public interface Component {
+
+    public void sampleOperation();
+
+}
+
+具体构件角色
+public class ConcreteComponent implements Component {
+
+    @Override
+    public void sampleOperation() {
+        // 写相关的业务代码    
+    }
+
+}
+
+装饰角色
+public class Decorator implements Component{
+    private Component component;
+
+    public Decorator(Component component){
+        this.component = component;
+    }
+
+    @Override
+    public void sampleOperation() {
+        // 委派给构件        
+   		component.sampleOperation();
+    }
+
+}
+
+具体装饰角色
+public class ConcreteDecoratorA extends Decorator {
+
+    public ConcreteDecoratorA(Component component) {
+        super(component);
+    }
+
+    @Override
+    public void sampleOperation() {
+　　　　	　super.sampleOperation();
+        // 写相关的业务代码   
+    }
+}
+
+具体装饰角色
+public class ConcreteDecoratorB extends Decorator {
+
+    public ConcreteDecoratorB(Component component) {
+        super(component);
+    }
+
+    @Override
+    public void sampleOperation() {
+　　　　  	super.sampleOperation();
+        // 写相关的业务代码    
+    }
+}
