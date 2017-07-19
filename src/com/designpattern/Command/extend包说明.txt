@@ -1,0 +1,7 @@
+extend 为命令模式的扩展说明
+
+Undo   撤销请求简单实例
+MultiUndo 多次撤销实例
+CommandQueue   队列请求实例
+MacroCommand   宏命令请求实例
+RequestLog 请求日志实例
