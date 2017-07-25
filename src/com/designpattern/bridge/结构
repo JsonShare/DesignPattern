@@ -1,0 +1,67 @@
+/** 
+* 定义实现部分的接口，可以与抽象部分接口的方法不一样 
+*/  
+public interface Implementor {  
+  /** 
+   * 示例方法，实现抽象部分需要的某些具体功能 
+   */  
+  public void operationImpl();  
+}
+
+/** 
+* 定义抽象部分的接口 
+*/
+public abstract class Abstraction {  
+  /** 
+   * 持有一个实现部分的对象 
+   */  
+  protected Implementor impl;  
+  /** 
+   * 构造方法，传入实现部分的对象  
+   * @param impl 实现部分的对象 
+   */  
+  public Abstraction(Implementor impl){  
+      this.impl = impl;  
+  }  
+  /** 
+   * 示例操作，实现一定的功能，可能需要转调实现部分的具体实现方法 
+   */  
+  public void operation() {  
+      impl.operationImpl();  
+  }  
+}
+
+/** 
+* 真正的具体实现对象 
+*/  
+public class ConcreteImplementorA implements Implementor {  
+  public void operationImpl() {   
+      //真正的实现  
+  }  
+}  
+
+/** 
+* 真正的具体实现对象 
+*/  
+public class ConcreteImplementorB implements Implementor {  
+  public void operationImpl() {   
+      //真正的实现  
+  }  
+}
+
+/** 
+* 扩充由Abstraction定义的接口功能 
+*/  
+public class RefinedAbstraction extends Abstraction {  
+  public RefinedAbstraction(Implementor impl) {  
+      super(impl);  
+  }  
+  /** 
+   * 示例操作，实现一定的功能 
+   */  
+  public void otherOperation(){  
+      //实现一定的功能，可能会使用具体实现部分的实现方法，  
+      //但是本方法更大的可能是使用Abstraction中定义的方法，  
+      //通过组合使用Abstraction中定义的方法来完成更多的功能  
+  }  
+}

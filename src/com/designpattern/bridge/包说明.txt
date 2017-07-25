@@ -1,0 +1,5 @@
+对应博客源码
+solution_1 方案一源码，即未使用桥接模式
+solution_1 方案二源码，即使用桥接模式
+
+scene_example JDBC模拟--讲解桥接模式
