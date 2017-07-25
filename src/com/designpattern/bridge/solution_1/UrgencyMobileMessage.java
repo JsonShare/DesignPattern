@@ -3,7 +3,7 @@ package com.designpattern.bridge.solution_1;
  * 使用短信方式发送【加急】信息
  * @author Json
 */
-public class UrgencyMobileMessage implements Message {
+public class UrgencyMobileMessage implements UrgencyMessage {
 
 	@Override
 	public void send(String message, String users) {
