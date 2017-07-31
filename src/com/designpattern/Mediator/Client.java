@@ -15,7 +15,7 @@ public class Client {
 		
 		mediator.setPeopleA(a);
 		mediator.setPeopleB(b);
-		mediator.sePeopleC(c);
+		mediator.setPeopleC(c);
 		
 		mediator.chat(a, "中午吃啥饭？");
 		System.out.println();

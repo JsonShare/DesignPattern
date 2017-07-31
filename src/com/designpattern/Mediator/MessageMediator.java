@@ -20,7 +20,7 @@ public class MessageMediator implements Mediator {
         this.B = B;
     }
     
-    public void sePeopleC(PeopleC C) {
+    public void setPeopleC(PeopleC C) {
     	this.C = C;
     }
 
