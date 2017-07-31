@@ -1,0 +1,78 @@
+//抽象中介者类
+public interface Mediator {
+    /**
+     * 同事对象在自身改变的时候来通知中介者的方法
+     * 让中介者去负责相应的与其他同事对象的交互
+     */
+    public void changed(Colleague c);
+}
+
+//抽象同事类
+public abstract class Colleague {
+    //持有一个中介者对象
+    private Mediator mediator;
+    /**
+     * 构造函数
+     */
+    public Colleague(Mediator mediator){
+        this.mediator = mediator;
+    }
+    /**
+     * 获取当前同事类对应的中介者对象
+     */
+    public Mediator getMediator() {
+        return mediator;
+    }
+}
+
+//具体中介者类
+public class ConcreteMediator implements Mediator {
+    //持有并维护同事A
+    private ConcreteColleagueA colleagueA;
+    //持有并维护同事B
+    private ConcreteColleagueB colleagueB;    
+
+    public void setColleagueA(ConcreteColleagueA colleagueA) {
+        this.colleagueA = colleagueA;
+    }
+
+    public void setColleagueB(ConcreteColleagueB colleagueB) {
+        this.colleagueB = colleagueB;
+    }
+
+    @Override
+    public void changed(Colleague c) {
+        /**
+         * 某一个同事类发生了变化，通常需要与其他同事交互
+         * 具体协调相应的同事对象来实现协作行为
+         */
+    }
+}
+
+//具体同事类
+public class ConcreteColleagueA extends Colleague {
+
+    public ConcreteColleagueA(Mediator mediator) {
+        super(mediator);
+    }
+    /**
+     * 示意方法，执行某些操作
+     */
+    public void operation(){
+        //在需要跟其他同事通信的时候，通知中介者对象
+        getMediator().changed(this);
+    }
+}
+public class ConcreteColleagueB extends Colleague {
+
+    public ConcreteColleagueB(Mediator mediator) {
+        super(mediator);
+    }
+    /**
+     * 示意方法，执行某些操作
+     */
+    public void operation(){
+        //在需要跟其他同事通信的时候，通知中介者对象
+        getMediator().changed(this);
+    }
+}
