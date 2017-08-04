@@ -1,0 +1,110 @@
+说明：
+Memento 对象给 Originator 角色对象提供一个宽接口，而为其他对象提供一个窄接口，即黑箱实现。
+
+/**
+ * 备忘录窄接口
+ */
+public interface MementoIF {
+
+}
+
+/**
+ * 原发器对象
+ */
+public class Originator {
+	/**
+	 * 需要存储的状态，也有不需要存储的状态
+	 */
+    private String state;  
+
+    public String getState() {
+        return state;
+    }
+    
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    /**
+     * 创建一个新的备忘录对象
+     */
+    public MementoIF createMemento(){
+        return new Memento(state);
+    }
+    
+    /**
+     * 发起人恢复到备忘录对象记录的状态
+     */
+    public void restoreMemento(MementoIF memento){
+        this.setState(((Memento)memento).getState());
+    }
+
+    /**
+     * 内部类实现备忘录
+     * 私有的，只有自己能访问
+     */
+    private class Memento implements MementoIF{
+        private String state;
+        /**
+         * 构造方法
+         */
+        private Memento(String state){
+            this.state = state;
+        }
+
+        private String getState() {
+            return state;
+        }
+        
+        private void setState(String state) {
+            this.state = state;
+        }
+    }
+}
+
+/**
+ * 备忘录管理者
+ */
+public class Caretaker {
+    /**
+     * 备忘录对象
+     */
+	private MementoIF memento;
+    
+	/**
+     * 获取备忘录对象
+     */
+    public MementoIF retrieveMemento() {
+        return memento;
+    }
+
+    /**
+     * 保存备忘录对象
+     */
+    public void saveMemento(MementoIF memento) {
+        this.memento = memento;
+    }
+}
+
+/**
+ * 客户端调用示例
+ */
+public class Client {
+	public static void main(String[] args) {
+		Originator originator = new Originator();  
+		Caretaker caretaker = new Caretaker();
+		
+		originator.setState("状态1");  
+		System.out.println("当前状态："+originator.getState());
+	    // 存储内部状态  
+		caretaker.saveMemento(originator.createMemento());  
+	    
+		// 改变状态  
+	    originator.setState("状态2");  
+	    System.out.println("当前状态："+originator.getState());
+	    // 恢复状态  
+	    originator.restoreMemento(caretaker.retrieveMemento());  
+	    
+	    System.out.println("恢复后状态："+originator.getState());
+    }  
+}

@@ -1,0 +1,94 @@
+说明：
+备忘录角色对任何对象都提供一个（宽）接口，备忘录角色的内部所存储的状态就对所有对象公开。即白箱实现。 
+白箱实现发起人和负责人提供相同接口，使得负责人可以访问备忘录全部内容，并不安全。
+白箱实现对备忘录内容的保护靠的是程序员的自律，实现也很简单。
+
+/**
+ * 备忘录
+ */
+public class Memento {
+    private String state;
+
+    public Memento(String state){
+        this.state = state;
+    }
+
+    public String getState(){
+        return this.state;
+    }
+
+    public void setState(String state){
+        this.state = state;
+    }
+}
+
+/**
+ * 原发器对象
+ */
+public class Originator {
+	/**
+	 * 需要存储的状态，也有不需要存储的状态
+	 */
+    private String state;  
+
+	public String getState() {
+        return this.state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    //创建备忘录对象
+    public Memento createMemento() {
+        return new Memento(state);
+    }
+
+    //从备忘录中恢复状态
+    public void restoreMemento(Memento memento) {
+        this.state = memento.getState();
+    }
+}
+
+/**
+ * 备忘录管理者
+ */
+public class Caretaker {
+    /**
+     * 备忘录对象
+     */
+    private Memento memento;
+
+	//获取备忘录
+    public Memento retrieveMemento() {
+        return this.memento;
+    }
+
+	//存储备忘录对象
+    public void saveMemento(Memento memento) {
+     	this.memento = memento;
+    }
+}
+
+/**
+ * 客户端调用示例
+ */
+public class Client {
+	public static void main(String[] args) {
+		Originator originator = new Originator();  
+		Caretaker caretaker = new Caretaker();
+		
+		originator.setState("状态1");  
+		System.out.println("当前状态："+originator.getState());
+        // 存储内部状态  
+		caretaker.saveMemento(originator.createMemento());  
+        
+		// 改变状态  
+        originator.setState("状态2");  
+        System.out.println("当前状态："+originator.getState());
+        // 恢复状态  
+        originator.restoreMemento(caretaker.retrieveMemento());  
+        
+        System.out.println("恢复后状态："+originator.getState());
+    }  
+}

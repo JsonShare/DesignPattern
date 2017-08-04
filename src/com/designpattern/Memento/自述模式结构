@@ -1,0 +1,65 @@
+**自述历史作为一个备忘录模式的特殊实现形式非常简单易懂**
+
+/**
+ * 备忘录窄接口
+ */
+public interface MementoIF {
+
+}
+
+/**
+ *发起人角色自己兼任负责人角色
+ */
+public class Originator {
+    private String state;
+
+    public String getState(){
+        return state;
+    }
+    
+    public void setState(String state){
+        this.state = state;
+    }
+
+    public Memento createMemento(){
+        return new Memento(this);
+    }
+
+    public void restoreMemento(MementoIF memento){
+        Memento m = (Memento)memento;
+        setState(m.state);
+    }
+
+    private class Memento implements MementoIF{
+        private String state;
+
+        private Memento(Originator o){
+            this.state = o.state;
+        }
+
+        private String getState() {
+            return state;
+        }
+
+    }
+}
+
+//调用示例
+public class Client {
+	public static void main(String[] args) {
+        Originator o = new Originator();
+        // 修改状态
+        o.setState("状态1");
+        System.out.println("当前状态："+o.getState());
+        
+        // 创建备忘录
+        MementoIF memento = o.createMemento();
+        // 修改状态
+        o.setState("状态2");
+        System.out.println("当前状态："+o.getState());
+        
+        // 按照备忘录恢复对象的状态
+        o.restoreMemento(memento);
+        System.out.println("当前状态："+o.getState());
+    }
+}

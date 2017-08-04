@@ -1,0 +1,8 @@
+
+
+单个检查点     SingleCheckpoints
+多重检查点     MutilCheckpoints
+
+利用备忘录实现撤销操作     undoByMemento
+
+离线存储   OfflineStorage
