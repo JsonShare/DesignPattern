@@ -1,0 +1,48 @@
+/**
+ * 先来看看原型接口的定义 ： 声明一个克隆自身的接口
+ */
+public interface Prototype {
+	/**
+	 * 克隆自身的方法
+	 * @return 一个从自身克隆出来的对象
+	 */
+	public Prototype clone();
+}
+
+/**
+ * 具体的原型实现对象 ： 克隆的具体实现对象
+ * 为了跟上面原型模式的结构示意图保持一致，因此这两个具体的原型实现对象，都没有定义属性。事实上，在实际使用原型模式的应用中，原型对象多是有属性的，克隆原型的时候也是需要克隆原型对象的属性的，特此说明一下。
+ */
+public class ConcretePrototype implements Prototype {
+	public Prototype clone() {
+	   //最简单的克隆，新建一个自身对象，由于没有属性，就不去复制值了
+	   Prototype prototype = new ConcretePrototype();
+	   return prototype;
+	}
+}
+
+/**
+ * 使用原型的客户端
+ */
+public class Client {
+	/**
+	 * 持有需要使用的原型接口对象
+	 */
+	private Prototype prototype;
+	
+	/**
+	 * 构造方法，传入需要使用的原型接口对象
+	 * @param prototype 需要使用的原型接口对象
+	 */
+	public Client(Prototype prototype){
+		this.prototype = prototype;
+	}
+	
+	/**
+	 * 示意方法，执行某个功能操作
+	 */
+	public void operation(){
+		//会需要创建原型接口的对象
+		Prototype newPrototype = prototype.clone();
+	}
+}
