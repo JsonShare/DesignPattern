@@ -1,0 +1,67 @@
+/***
+ * 享元接口，通过这个接口享元可以接受并作用于外蕴状态
+ */
+public interface Flyweight {
+	/**
+	 * 示例操作，传入外蕴状态
+	 * @param extrinsicState 示例参数，外蕴状态
+	 */
+	public void operation(String extrinsicState);
+}
+
+/**
+ * 享元对象，封装flyweight的内蕴状态
+ */
+public class ConcreteFlyweight implements Flyweight{
+	/**
+	 * 示例，描述内蕴状态
+	 */
+	private String intrinsicState;
+
+	/**
+	 * 构造方法，传入享元对象的内蕴状态
+	 * @param state 享元对象的内蕴状态
+	 */
+	public ConcreteFlyweight(String state){
+		this.intrinsicState = state;
+	}
+
+	/**
+     * 外蕴状态作为参数传入方法中，改变方法的行为，
+     * 但是并不改变对象的内蕴状态。
+     */
+	public void operation(String extrinsicState) {
+		//具体的功能处理，可能会用到享元内蕴、外蕴状态
+	} 
+}
+
+/**
+ * 享元工厂
+ * 在享元模式中，客户端不能直接创建共享的享元对象实例，必须通过享元工厂来创建
+ */
+public class FlyweightFactory {
+	/**
+	 * 缓存多个flyweight对象，这里只是示意一下
+	 */
+	private Map<String,Flyweight> fsMap = new HashMap<String,Flyweight>();
+
+	/**
+	 * 获取key对应的享元对象
+	 * @param key 获取享元对象的key，只是示意
+	 * @return key 对应的享元对象
+	 */
+	public Flyweight factory(String key) {
+		//这个方法里面基本的实现步骤如下：
+		//1：先从缓存里面查找，是否存在key对应的Flyweight对象
+		Flyweight f = fsMap.get(key);
+
+		//如果存在，就返回相对应的Flyweight对象
+		if(f == null){//如果不存在
+			//创建一个新的Flyweight对象
+			f = new ConcreteFlyweight(key);
+			//把这个新的Flyweight对象添加到缓存里面
+			fsMap.put(key,f);
+		}
+		return f;
+	}
+}

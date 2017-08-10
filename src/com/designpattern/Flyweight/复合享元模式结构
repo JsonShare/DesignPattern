@@ -1,0 +1,97 @@
+/***
+ * 享元接口，通过这个接口享元可以接受并作用于外蕴状态
+ */
+public interface Flyweight {
+	/**
+	 * 示例操作，传入外蕴状态
+	 * @param extrinsicState 示例参数，外蕴状态
+	 */
+	public void operation(String extrinsicState);
+}
+
+/**
+ * 享元对象，封装flyweight的内蕴状态
+ */
+public class ConcreteFlyweight implements Flyweight{
+	/**
+	 * 示例，描述内蕴状态
+	 */
+	private String intrinsicState;
+
+	/**
+	 * 构造方法，传入享元对象的内蕴状态
+	 * @param state 享元对象的内蕴状态
+	 */
+	public ConcreteFlyweight(String state){
+		this.intrinsicState = state;
+	}
+
+	/**
+     * 外蕴状态作为参数传入方法中，改变方法的行为，
+     * 但是并不改变对象的内蕴状态。
+     */
+	public void operation(String extrinsicState) {
+		//具体的功能处理，可能会用到享元内蕴、外蕴状态
+	} 
+}
+
+/**
+ * 复合享元角色
+ */
+public class ConcreteCompositeFlyweight implements Flyweight {
+    private Map<String,Flyweight> flies = new HashMap<String,Flyweight>();
+    
+    /**
+     * 增加一个新的单纯享元对象到聚集中
+     */
+    public void add(String key , Flyweight fly){
+        flies.put(key,fly);
+    }
+    
+    /**
+     * 外蕴状态作为参数传入到方法中
+     */
+    @Override
+    public void operation(String state) {
+        Flyweight fly = null;
+        for(Object o : flies.keySet()){
+            fly = flies.get(o);
+            fly.operation(state);
+        }
+    }
+}
+
+/**
+ * 享元工厂
+ * 在享元模式中，客户端不能直接创建共享的享元对象实例，必须通过享元工厂来创建
+ */
+public class FlyweightFactory {
+	
+    private Map<String,Flyweight> flies = new HashMap<String,Flyweight>();
+    
+    /**
+     * 复合享元工厂方法
+     */
+    public Flyweight factory(List<String> compositeState){
+        ConcreteCompositeFlyweight compositeFly = new ConcreteCompositeFlyweight();
+        for(String state : compositeState){
+            compositeFly.add(state,this.factory(state));
+        }
+        return compositeFly;
+    }
+   
+    /**
+     * 单纯享元工厂方法
+     */
+    public Flyweight factory(String state){
+        //先从缓存中查找对象
+        Flyweight fly = flies.get(state);
+        if(fly == null){
+            //如果对象不存在则创建一个新的Flyweight对象
+            fly = new ConcreteFlyweight(state);
+            //把这个新的Flyweight对象添加到缓存中
+            flies.put(state, fly);
+        }
+        return fly;
+    }
+}
