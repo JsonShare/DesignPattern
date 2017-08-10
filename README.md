@@ -22,7 +22,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[外观模式](http://www.cnblogs.com/JsonShare/p/7121383.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[桥接模式](http://www.cnblogs.com/JsonShare/p/7233342.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[组合模式](http://www.cnblogs.com/JsonShare/p/7239560.html)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;享元模式
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[享元模式](http://www.cnblogs.com/JsonShare/p/7338419.html)<br>
 
 行为型模式（11种）：<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[策略模式](http://www.cnblogs.com/JsonShare/p/7109983.html)<br>
