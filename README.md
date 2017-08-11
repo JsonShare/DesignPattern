@@ -39,5 +39,5 @@
 
 #### 设计模式结构图
 
-![image](https://github.com/JsonShare/DesignPattern/raw/master/Images/总结.png)
+![image](https://github.com/JsonShare/DesignPattern/raw/master/Images/summary.png)
 
