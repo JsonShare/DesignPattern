@@ -20,8 +20,9 @@ public abstract class KFC {
 	}
 	
 	/**
-	* 示意处理请求的方法，虽然这个示意方法是没有传入参数，
-	* 但实际是可以传入参数的，根据具体需要来选择是否传递参数
-	*/
+	 * 处理接单
+	 * @param _x  横坐标，用于判断距离
+	 * @param _y  纵坐标，用于判断距离
+	 */
 	public abstract void handleRequest(int _x,int _y);
 }
