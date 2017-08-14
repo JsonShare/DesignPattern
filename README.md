@@ -29,7 +29,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[模板方法模式](http://www.cnblogs.com/JsonShare/p/7120451.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[观察者模式](http://www.cnblogs.com/JsonShare/p/7270546.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[迭代器模式](http://www.cnblogs.com/JsonShare/p/7196615.html)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任链模式<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[责任链模式](http://www.cnblogs.com/JsonShare/p/7357673.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[命令模式](http://www.cnblogs.com/JsonShare/p/7202133.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[备忘录模式](http://www.cnblogs.com/JsonShare/p/7283972.html)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[状态模式](http://www.cnblogs.com/JsonShare/p/7246915.html)<br>
