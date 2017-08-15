@@ -21,8 +21,8 @@ public abstract class KFC {
 	
 	/**
 	 * 处理接单
-	 * @param _x  横坐标，用于判断距离
-	 * @param _y  纵坐标，用于判断距离
+	 * @param _x  下单地点横坐标，用于判断距离
+	 * @param _y  下单地点纵坐标，用于判断距离
 	 */
 	public abstract void handleRequest(int _x,int _y);
 }
