@@ -1,0 +1,8 @@
+访问者模式拓展篇实例：       com.designpattern.Visitor.expand
+
+	静态分派 ： com.designpattern.Visitor.expand.Static
+
+	动态分派：  com.designpattern.Visitor.expand.Dynamic
+	
+	双分派：      com.designpattern.Visitor.expand.doubleDispatch
+				
